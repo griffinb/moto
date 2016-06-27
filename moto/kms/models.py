@@ -67,6 +67,7 @@ class KmsBackend(BaseBackend):
     def create_key(self, policy, key_usage, description, region):
         key = Key(policy, key_usage, description, region)
         self.keys[key.id] = key
+        self.keys[key.arn] = key
         return key
 
     def delete_key(self, key_id):
